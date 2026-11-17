@@ -1,0 +1,5 @@
+Coloque aqui os ativos oficiais da marca (nao incluidos neste pack):
+  brand-symbol.svg
+  favicon.svg
+  apple-touch-icon.png
+Os caminhos ja estao configurados no index.html.

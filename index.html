@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QR Code &amp; Barcode Generator | Executive Digital</title>
+<meta name="description" content="Gere QR Codes e códigos de barras no navegador, com logomarca central e exportação em SVG, PNG e JPEG.">
+<meta name="theme-color" content="#1D4263">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header><div class="wrap bar">
+<div class="brand"><img src="assets/icons/brand-symbol.svg" alt="" onerror="this.remove()"><div><h1>QR Code &amp; Barcode Generator</h1><div class="sub">Executive Digital</div></div></div>
+<nav aria-label="Módulos"><button type="button" class="tab" data-m="qr" aria-pressed="true">QR Code</button><button type="button" class="tab" data-m="bc" aria-pressed="false">Código de barras</button></nav>
+</div></header>
+<main class="wrap">
+<section class="panel" aria-label="Configuração">
+<div id="qr" class="mod">
+<fieldset><legend>Conteúdo</legend><label>Tipo de conteúdo<select id="qtype"></select></label><div id="qf"></div></fieldset>
+<fieldset><legend>Aparência</legend>
+<div class="row"><div data-cf="fg|Cor dos módulos|#162638"></div><div data-cf="bg|Cor do fundo|#ffffff"></div></div>
+<div class="chips" id="pre" role="group" aria-label="Paletas predefinidas"></div>
+<div class="row">
+<label>Estilo<select id="sty"><option value="square">Quadrado (padrão)</option><option value="dots">Pontos</option><option value="rounded">Arredondado</option></select></label>
+<label><span>Margem (área de respiro): <output id="mgo">10</output>%</span><input type="range" id="mg" min="0" max="20" value="10"></label>
+</div>
+<label class="chk"><input type="checkbox" id="tr">Fundo transparente (SVG e PNG)</label>
+</fieldset>
+<fieldset><legend>Logomarca central</legend>
+<label>Imagem (PNG, JPEG, WebP ou SVG, até 2 MB)<input type="file" id="lf" accept="image/png,image/jpeg,image/webp,image/svg+xml"></label>
+<div class="logo" id="li" hidden><img id="lt" alt="Logomarca selecionada"><span id="ln"></span><button type="button" class="btn" id="lr">Remover</button></div>
+<label><span>Tamanho da logomarca: <output id="lwo">20</output>%</span><input type="range" id="lw" min="10" max="30" value="20" disabled></label>
+</fieldset>
+</div>
+<div id="bc" class="mod" hidden>
+<fieldset><legend>Conteúdo</legend>
+<label>Formato<select id="bfmt"></select></label>
+<label>Valor do código<input id="bval" class="mono" autocomplete="off" spellcheck="false"></label>
+<button type="button" class="btn" id="bfix" hidden></button>
+</fieldset>
+<fieldset><legend>Aparência</legend>
+<div class="row"><div data-cf="bfg|Cor das barras|#162638"></div><div data-cf="bbg|Cor do fundo|#ffffff"></div></div>
+<div class="row">
+<label>Largura da barra (px)<input type="number" id="bw" min="1" max="6" step="1" value="2"></label>
+<label>Altura (px)<input type="number" id="bh" min="30" max="300" value="100"></label>
+<label>Margem (px)<input type="number" id="bm" min="0" max="60" value="10"></label>
+</div>
+<div class="row">
+<label class="chk"><input type="checkbox" id="bt" checked>Exibir texto inferior</label>
+<label>Fonte (px)<input type="number" id="bfs" min="8" max="40" value="16"></label>
+<label>Alinhamento do texto<select id="bal"><option value="center">Centro</option><option value="left">Esquerda</option><option value="right">Direita</option></select></label>
+</div>
+</fieldset>
+</div>
+</section>
+<section class="panel sticky" aria-labelledby="hp">
+<h2 id="hp">Pré-visualização</h2>
+<div class="stage"><div id="stq"></div><div id="stb" hidden></div></div>
+<p class="meta" id="meta"></p>
+<p id="msg" role="status" aria-live="polite"></p>
+<div class="row">
+<label id="szl">Dimensão de exportação (px)<input id="sz" type="number" list="szs" min="128" max="4096" value="1024"><datalist id="szs"><option value="512"><option value="1024"><option value="2048"></datalist></label>
+<label id="scl" hidden>Escala de PNG e JPEG<select id="sc"><option value="2">2×</option><option value="4" selected>4×</option><option value="8">8×</option></select></label>
+<label>Nome do arquivo<input id="fn" autocomplete="off"></label>
+</div>
+<div class="acts">
+<button type="button" class="btn p" id="gen">Gerar código</button>
+<button type="button" class="btn" data-f="svg">Baixar SVG</button>
+<button type="button" class="btn" data-f="png">Baixar PNG</button>
+<button type="button" class="btn" data-f="jpeg">Baixar JPEG</button>
+<button type="button" class="btn" id="cp">Copiar conteúdo</button>
+<button type="button" class="btn" id="clr">Limpar</button>
+</div>
+</section>
+</main>
+<footer><div class="wrap"><p>Desenvolvido por <a href="https://eliseuangelos.github.io/">Eliseu Fernandes Laurindo</a></p><p>© <span id="yr">2026</span> Eliseu Fernandes Laurindo. Todos os direitos reservados.</p></div></footer>
+<script src="js/vendor/qrcode.js"></script>
+<script src="js/qr-render.js"></script>
+<script src="js/barcode.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
